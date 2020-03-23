@@ -1,6 +1,5 @@
 // Copyright 2020 Pauzin Leonid
 #include <gtest/gtest.h>
-#include <algorithm>
 #include <vector>
 #include "./pauzin_l_shell_merge.h"
 
