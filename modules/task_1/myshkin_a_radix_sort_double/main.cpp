@@ -3,7 +3,7 @@
 #include <utility>
 #include <algorithm>
 #include "gtest/gtest.h"
-#include "../../../modules/task_1/myshkin_a_radix_sort_double/radix_sort_double.h"
+#include "./radix_sort_double.h"
 
 
 TEST(Senquential, Test_Numder_First) {

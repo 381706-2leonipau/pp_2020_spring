@@ -1,9 +1,8 @@
 // Copyright 2020 Myshkin Andrey
-#include "../../../modules/task_1/myshkin_a_radix_sort_double/radix_sort_double.h"
 #include <stdio.h>
 #include <cstring>
 #include <utility>
-
+#include "../../../modules/task_1/myshkin_a_radix_sort_double/radix_sort_double.h"
 
 int getRandomArray(double* buffer, int length, double rangebot, double rangetop) {
     if ((length <= 0) || (buffer == nullptr)) return -1;
