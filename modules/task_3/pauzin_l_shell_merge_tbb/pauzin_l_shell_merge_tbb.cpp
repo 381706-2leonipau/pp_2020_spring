@@ -79,7 +79,6 @@ std::vector<int> myMerge(std::vector<int> vec1, std::vector<int> vec2) {
     }
     k++;
   }
-
   if (size1 == 0) {
     for (int z = j; z < j + size2; z++) {
       result[k] = vec2[z];
@@ -91,31 +90,16 @@ std::vector<int> myMerge(std::vector<int> vec1, std::vector<int> vec2) {
       k++;
     }
   }
-
   return result;
 }
 
-std::vector<int> myMerge_SEQ(const std::vector<std::vector<int>>& A, std::size_t nthreads, int size) {
-  std::vector<int> resVec = A[0];
-
+std::vector<int> myMerge_SEQ(const std::vector<std::vector<int>>& vec, std::size_t nthreads, int size) {
+  std::vector<int> resVec = vec[0];
   for (int i = 1; i < nthreads; i++) {
-    resVec = myMerge(resVec, A[i]);
+    resVec = myMerge(resVec, vec[i]);
   }
   return resVec;
 }
-
-std::vector<int> shellBatcher_seq(const std::vector<int>& A, const int n, int size) {
-  std::vector<std::vector<int>> vec = splitVector(A, n);
-  std::vector<int> resVec;
-  for (int i = 0; i < static_cast<int> (vec.size()); ++i) {
-    vec[i] = shellSort(vec[i], vec[i].size());
-  }
-  const int thread = n;
-  resVec = myMerge_SEQ(vec, thread, size);
-
-  return resVec;
-}
-
 
 std::vector<int> mySortTbb(const std::vector<int>& vec, std::size_t nthreads) {
   std::size_t size = vec.size();

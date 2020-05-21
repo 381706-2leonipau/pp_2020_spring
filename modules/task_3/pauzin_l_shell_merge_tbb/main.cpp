@@ -7,7 +7,7 @@ TEST(Shell_Merge_Sort_TBB, Simple_Test) {
   const int size = 1000;
   std::vector<int> v1(size);
   std::vector<int> v2(size);
-  
+ 
   v1 = getRandomVector(size);
   v1 = v2;
   v1 = mySortTbb(v1, 3);
@@ -24,6 +24,19 @@ TEST(Shell_Merge_Sort_tbb, Simple_Test_With_2_Thr) {
   v1 = getRandomVector(size);
   v1 = v2;
   v1 = mySortTbb(v1, 2);
+  v2 = ShellSort(v2);
+  for (int i = 0; i < size; i++) {
+    ASSERT_EQ(v2[i], v1[i]);
+  }
+}
+
+TEST(Shell_Merge_Sort_tbb, Simple_Test_With_3_Thr) {
+  const int size = 100;
+  std::vector<int> v1(size);
+  std::vector<int> v2(size);
+  v1 = getRandomVector(size);
+  v1 = v2;
+  v1 = mySortTbb(v1, 3);
   v2 = ShellSort(v2);
   for (int i = 0; i < size; i++) {
     ASSERT_EQ(v2[i], v1[i]);
@@ -66,6 +79,8 @@ TEST(Shell_Merge_Sort_tbb, Test_With_Negative_Vec) {
     ASSERT_EQ(v2[i], v1[i]);
   }
 }
+
+
 
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
