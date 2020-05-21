@@ -133,7 +133,7 @@ std::vector<int> ShellMerge_tbb(const std::vector<int>& A, const int nthreads, i
   return res;
 }
 
-//std::vector <int> mySortOmp(std::vector<int> vec, std::size_t nthreads) {
+//  std::vector <int> mySortOmp(std::vector<int> vec, std::size_t nthreads) {
 //  omp_set_num_threads(nthreads);
 //  std::vector<int> result = vec;
 //  int size = result.size();
@@ -145,7 +145,7 @@ std::vector<int> ShellMerge_tbb(const std::vector<int>& A, const int nthreads, i
 //  if (size < 1)
 //    throw "Wrong vector size";
 //
-//#pragma omp parallel shared(vec, remainder) private(localVec)
+//  #pragma omp parallel shared(vec, remainder) private(localVec)
 //  {
 //    std::size_t tid = omp_get_thread_num();
 //    if (tid == 0) {
@@ -163,10 +163,10 @@ std::vector<int> ShellMerge_tbb(const std::vector<int>& A, const int nthreads, i
 //
 //    localVec = ShellSort(localVec);
 //
-//#pragma omp master
+//  #pragma omp master
 //    result = localVec;
-//#pragma omp barrier
-//#pragma omp critical
+//  #pragma omp barrier
+//  #pragma omp critical
 //    if (tid != 0) {
 //      result = myMerge(localVec, result);
 //    }
