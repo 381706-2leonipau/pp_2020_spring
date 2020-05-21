@@ -118,6 +118,9 @@ std::vector<int> mySortTbb(const std::vector<int>& vec, std::size_t nthreads) {
     }, tbb::simple_partitioner());
 
   init.terminate();
-  resVec = myMerge_SEQ(splited, nthreads, size);
+  //  resVec = myMerge_SEQ(splited, nthreads, size);
+  for (int i = 1; i < nthreads; i++) {
+    resVec = myMerge(resVec, splited[i]);
+  }
   return resVec;
 }
