@@ -1,6 +1,23 @@
 [![Build Status](https://travis-ci.com/allnes/pp_2020_spring.svg?branch=master)](https://travis-ci.com/allnes/pp_2020_spring)
 [![Build status](https://ci.appveyor.com/api/projects/status/ofu3hvr28bwp44vg/branch/master?svg=true)](https://ci.appveyor.com/project/allnes/pp-2020-spring/branch/master)
 
+## Как собрать проект
+
+git submodule update --init --recursive
+
+mkdir build
+
+cd build
+
+cmake -D USE_OMP=ON .. // -D USE_TBB=ON ..
+
+cd ..
+
+cmake --build build --config RELEASE
+
+make // FOR LINUX
+
+
 # Parallel programming course
 
 The following parallel programming technologies are considered in practice:
