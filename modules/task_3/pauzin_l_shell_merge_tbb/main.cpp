@@ -9,14 +9,14 @@ TEST(Shell_Merge_Sort_TBB, Simple_Test) {
   std::vector<int> v2(size);
   v1 = getRandomVector(size);
   v1 = v2;
-  v1 = mySortTbb(v1, 3);
+  v1 = mySortTbb(v1, 2);
   v2 = ShellSort(v2);
   for (int i = 0; i < size; i++) {
     ASSERT_EQ(v2[i], v1[i]);
   }
 }
 
-TEST(Shell_Merge_Sort_tbb, Simple_Test_With_2_Thr) {
+TEST(Shell_Merge_Sort_TBB, Simple_Test_With_2_Thr) {
   const int size = 100;
   std::vector<int> v1(size);
   std::vector<int> v2(size);
@@ -29,7 +29,7 @@ TEST(Shell_Merge_Sort_tbb, Simple_Test_With_2_Thr) {
   }
 }
 
-TEST(Shell_Merge_Sort_tbb, Simple_Test_With_3_Thr) {
+TEST(Shell_Merge_Sort_TBB, Simple_Test_With_3_Thr) {
   const int size = 100;
   std::vector<int> v1(size);
   std::vector<int> v2(size);
@@ -42,7 +42,7 @@ TEST(Shell_Merge_Sort_tbb, Simple_Test_With_3_Thr) {
   }
 }
 
-TEST(Shell_Merge_Sort_tbb, Test_With_Odd_Amount) {
+TEST(Shell_Merge_Sort_TBB, Test_With_Odd_Amount) {
   const int size = 13;
   std::vector<int> v1(size);
   v1 = getRandomVector(size);
@@ -54,18 +54,18 @@ TEST(Shell_Merge_Sort_tbb, Test_With_Odd_Amount) {
   }
 }
 
-TEST(Shell_Merge_Sort_tbb, Test_With_Zero_Vec) {
+TEST(Shell_Merge_Sort_TBB, Test_With_Zero_Vec) {
   std::vector<int> v1(0);
   ASSERT_ANY_THROW(v1 = mySortTbb(v1, 2));
 }
 
-TEST(Shell_Merge_Sort_tbb, Test_With_One_Elem_Vec) {
+TEST(Shell_Merge_Sort_TBB, Test_With_One_Elem_Vec) {
   std::vector<int> v1(1);
   v1[0] = 5;
   ASSERT_NO_THROW(v1 = mySortTbb(v1, 1));
 }
 
-TEST(Shell_Merge_Sort_tbb, Test_With_Negative_Vec) {
+TEST(Shell_Merge_Sort_TBB, Test_With_Negative_Vec) {
   const int size = 10;
   std::vector<int> v1(size);
   for (int i = 0; i < size; i++) {

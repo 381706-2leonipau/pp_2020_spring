@@ -93,14 +93,6 @@ std::vector<int> myMerge(std::vector<int> vec1, std::vector<int> vec2) {
   return result;
 }
 
-std::vector<int> myMerge_SEQ(const std::vector<std::vector<int>>& vec, std::size_t nthreads, int size) {
-  std::vector<int> resVec = vec[0];
-  for (int i = 1; i < nthreads; i++) {
-    resVec = myMerge(resVec, vec[i]);
-  }
-  return resVec;
-}
-
 std::vector<int> mySortTbb(const std::vector<int>& vec, std::size_t nthreads) {
   std::size_t size = vec.size();
   if (size == 1)
@@ -118,7 +110,7 @@ std::vector<int> mySortTbb(const std::vector<int>& vec, std::size_t nthreads) {
     }, tbb::simple_partitioner());
 
   init.terminate();
-  //  resVec = myMerge_SEQ(splited, nthreads, size);
+  resVec = splited[0];
   for (int i = 1; i < nthreads; i++) {
     resVec = myMerge(resVec, splited[i]);
   }
