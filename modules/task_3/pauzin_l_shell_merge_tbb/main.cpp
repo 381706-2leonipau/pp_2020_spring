@@ -4,10 +4,9 @@
 #include "./pauzin_l_shell_merge_tbb.h"
 
 TEST(Shell_Merge_Sort_TBB, Simple_Test) {
-  const int size = 1000;
+  const int size = 100;
   std::vector<int> v1(size);
   std::vector<int> v2(size);
- 
   v1 = getRandomVector(size);
   v1 = v2;
   v1 = mySortTbb(v1, 3);
