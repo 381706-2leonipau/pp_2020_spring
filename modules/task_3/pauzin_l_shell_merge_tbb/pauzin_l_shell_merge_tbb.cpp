@@ -14,9 +14,9 @@ std::vector<int> getRandomVector(int n) {
   return vec;
 }
 
-std::vector <int> ShellSort(const std::vector <int>& vec) {
-  int step, i, j, tmp;
-  int size = vec.size();
+std::vector <int> ShellSort(const std::vector <int>& vec, int size) {
+  int step, i, j;
+  int tmp;
   std::vector <int> resulVec(vec);
   for (step = size / 2; step > 0; step /= 2)
     for (i = step; i < size; i++)
@@ -27,23 +27,6 @@ std::vector <int> ShellSort(const std::vector <int>& vec) {
       }
   return resulVec;
 }
-
-
-std::vector<int> shellSort(const std::vector<int>& A, int size) {
-  int step, i, j, tmp;
-  std::vector<int>array(A);
-  for (step = size / 2; step > 0; step /= 2) {
-    for (i = step; i < size; i++) {
-      for (j = i - step; j >= 0 && array[j] > array[j + step]; j -= step) {
-        tmp = array[j];
-        array[j] = array[j + step];
-        array[j + step] = tmp;
-      }
-    }
-  }
-  return array;
-}
-
 
 std::vector<std::vector<int>> splitVector(const std::vector<int>& vec, std::size_t nthreads) {
   std::vector<std::vector<int>> outVec;
@@ -106,12 +89,12 @@ std::vector<int> mySortTbb(const std::vector<int>& vec, std::size_t nthreads) {
     [&splited](const tbb::blocked_range<size_t>& r) {
       int begin = r.begin(), end = r.end();
       for (int i = begin; i != end; ++i)
-        splited[i] = shellSort(splited[i], splited[i].size());
+        splited[i] = ShellSort(splited[i], splited[i].size());
     }, tbb::simple_partitioner());
 
   init.terminate();
   resVec = splited[0];
-  for (int i = 1; i < nthreads; i++) {
+  for (std::size_t i = 1; i < nthreads; i++) {
     resVec = myMerge(resVec, splited[i]);
   }
   return resVec;
